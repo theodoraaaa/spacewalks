@@ -14,6 +14,7 @@ eva_df.to_csv(output_file, index=False, encoding='utf-8')
 
 eva_df.sort_values('date', inplace=True)
 
+# Plot cumulative time spent in space in hours over years
 eva_df['duration_hours'] = eva_df['duration'].str.split(":").apply(lambda x: int(x[0]) + int(x[1])/60)
 eva_df['cumulative_time'] = eva_df['duration_hours'].cumsum()
 plt.plot(eva_df['date'], eva_df['cumulative_time'], 'ko-')
